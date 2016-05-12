@@ -19,4 +19,4 @@ class CVODEReuseConan(ConanFile):
         self.copy(pattern="*.dylib", dst="bin", src="lib")
 
     def test(self):
-        self.run("cd bin && ./mycvode")
+        self.run("cd bin && .%smycvode" % os.sep)
