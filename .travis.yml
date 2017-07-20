@@ -8,6 +8,7 @@ env:
     - CONAN_UPLOAD="https://ogs.jfrog.io/ogs/api/conan/conan"
     - CONAN_REFERENCE="CVODE/2.8.2"
     - CONAN_USERNAME="jenkins"
+    - CONAN_LOGIN_USERNAME="jenkins"
     - CONAN_CHANNEL="testing"
     - CONAN_TOTAL_PAGES=1
     - CONAN_CURRENT_PAGE=1
