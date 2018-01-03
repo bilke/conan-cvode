@@ -4,13 +4,13 @@ import os
 channel = os.getenv("CONAN_CHANNEL", "testing")
 username = os.getenv("CONAN_USERNAME", "bilke")
 
-class CVODEReuseConan(ConanFile):
+class CvodeReuseConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    requires = "CVODE/2.8.2@%s/%s" % (username, channel)
+    requires = "cvode/2.8.2@%s/%s" % (username, channel)
     generators = "cmake"
 
     def build(self):
-        cmake = CMake(self.settings)
+        cmake = CMake(self)
         self.run('cmake %s %s' % (self.conanfile_directory, cmake.command_line))
         self.run("cmake --build . %s" % cmake.build_config)
 

@@ -2,8 +2,8 @@ import os
 from conans import ConanFile, CMake
 from conans.tools import download, unzip
 
-class CVODEConan(ConanFile):
-    name = "CVODE"
+class CvodeConan(ConanFile):
+    name = "cvode"
     description = """CVODE is a solver for stiff and nonstiff ordinary
                      differential equation systems given in explicit form."""
     version = "2.8.2"
