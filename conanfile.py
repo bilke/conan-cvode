@@ -9,17 +9,21 @@ class CvodeConan(ConanFile):
     version = "2.8.2"
     generators = "cmake"
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False]}
-    default_options = "shared=False"
+    options = {"shared": [True, False], "fPIC": [True, False]}
+    default_options = "shared=False", "fPIC=True"
     exports = ["CMakeLists.txt"]
     url="http://github.com/bilke/conan-cvode"
     license="http://computation.llnl.gov/casc/sundials/download/license.html"
 
     def source(self):
-        zip_name = "cvode-%s.tar.gz" % self.version
-        download("https://opengeosys.s3.amazonaws.com/ogs6-lib-sources/cvode-2.8.2.tar.gz" , zip_name)
+        zip_name = "%s.tar.gz" % self.version
+        download("https://github.com/ufz/cvode/archive/%s" % zip_name , zip_name)
         unzip(zip_name)
         os.unlink(zip_name)
+
+    def config_options(self):
+        if self.settings.os == "Windows":
+            del self.options.fPIC
 
     def build(self):
         cmake = CMake(self)
